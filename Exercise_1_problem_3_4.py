@@ -131,6 +131,11 @@ print('lines length:', len(lines))
 
 #raise NotImplementedError()
 from shapely.geometry import LineString
+for orig,dest in zip(orig_points,dest_points):
+  line=LineString([(orig.x,orig.y),(dest.x,dest.y)])
+  lines.append(line)
+
+
 
 # CODE FOR TESTING YOUR SOLUTION
 
@@ -165,13 +170,14 @@ print("Total length of all lines is", round(total_length, 2))
 # YOUR CODE HERE 8 to define create_od_lines() and calculate_total_distance()
 def create_od_lines(point1,point2):
   """create the line connect two points and into yhe list"""
-od_lines=[]
-for orig,dest in zip(point1,point2):
+ od_lines=[]
+for orig, dest in zip(point1,point2):
   line=LineString([(orig.x,orig.y),(dest.x,dest.y)])
   od_lines.append(line)
-  return od_lines
+ return od_lines
+  
 
-  def calculate_total_distance(line_string):
+def calculate_total_distance(line_string):
     """calculate the total distance"""
     total_distance=0.0
     for line in line_string:
